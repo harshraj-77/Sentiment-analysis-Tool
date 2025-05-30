@@ -98,7 +98,7 @@ networkx==3.2.1
 nltk==3.9.1
 notebook==7.4.2
 notebook_shim==0.2.4
-numpy==2.0.2
+numpy>=1.26.0,<2.0
 openai==1.79.0
 opt_einsum==3.4.0
 optree==0.15.0
