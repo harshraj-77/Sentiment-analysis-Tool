@@ -12,16 +12,19 @@ import string, json, re, io, base64, openai, random, torch
 from datetime import datetime
 import matplotlib.colors as mcolors
 
+
 # Ensure you have your OpenAI API key in static/keys.py
 # Example static/keys.py:
 # mykey = "YOUR_OPENAI_API_KEY"
-try:
-    from static.keys import mykey
-    client = openai.OpenAI(api_key=mykey)
-except ImportError:
-    print("Error: static/keys.py not found or 'mykey' not defined.")
-    print("Please create static/keys.py with: mykey = 'YOUR_OPENAI_API_KEY'")
-    client = None # Set client to None if key is not found to prevent errors
+import os
+from dotenv import load_dotenv
+
+# Load .env locally (optional for dev)
+load_dotenv()
+
+# Secure OpenAI API key from environment variables
+openai_api_key = os.getenv("OPENAI_API_KEY")
+client = openai.OpenAI(api_key=openai_api_key) if openai_api_key else None
 
 app = Flask(__name__)
 
