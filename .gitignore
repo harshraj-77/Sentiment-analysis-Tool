@@ -3,6 +3,14 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Block secret keys and temp deployment files
+static/keys.py
+*.log
+oryx-*.log
+oryx-manifest.toml
+oryx-appsettings.json
+/home/site/wwwroot/
+
 # static/
 logger/
 
