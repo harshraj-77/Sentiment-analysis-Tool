@@ -400,5 +400,6 @@ def index():
     return render_template('index.html', result=result_data, date=datetime.now().strftime('%d %b %Y'))
 
 if __name__ == '__main__':
-    print("[App Started] Running on http://127.0.0.1:5000")
-    app.run(debug=True)
+    # Only run with Flask's built-in server when NOT using Gunicorn
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
