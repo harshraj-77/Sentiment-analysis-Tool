@@ -71,6 +71,12 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A863B3612243407F9BE3F4A8782B3530 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_DFCA416D81684E9BA2BF8E264E69DFB2 }}
 
+      - name: ⚠️ Clean up wwwroot directory on Azure App Service (optional)
+        run: |
+          echo "Cleaning /home/site/wwwroot before deployment..."
+          az webapp ssh --name sentiment-analysis --resource-group YOUR_RESOURCE_GROUP_NAME --command "rm -rf /home/site/wwwroot/*"
+
+      
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
