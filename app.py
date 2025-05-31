@@ -12,10 +12,6 @@ import string, json, re, io, base64, openai, random, torch
 from datetime import datetime
 import matplotlib.colors as mcolors
 
-
-# Ensure you have your OpenAI API key in static/keys.py
-# Example static/keys.py:
-# mykey = "YOUR_OPENAI_API_KEY"
 import os
 from dotenv import load_dotenv
 
