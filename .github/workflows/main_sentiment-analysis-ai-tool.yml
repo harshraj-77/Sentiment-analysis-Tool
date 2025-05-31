@@ -31,8 +31,7 @@ jobs:
 
       - name: Prepare deployment package
         run: |
-          shopt -s extglob
-          zip -r release.zip !(venv|.git|.github|release.zip)
+          zip -r release.zip . -x "venv/*" -x ".github/*" -x "release.zip" -x "*.git*"
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
