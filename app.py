@@ -10,6 +10,7 @@ import nltk
 
 import string, json, re, io, base64, openai, random, torch
 from datetime import datetime
+from matplotlib import patches
 import matplotlib.colors as mcolors
 
 import os
