@@ -2,12 +2,12 @@ from flask import Flask, request, render_template
 import matplotlib
 matplotlib.use('Agg') # Use 'Agg' for non-interactive backend
 import matplotlib.pyplot as plt
-from matplotlib import patches
+
 from wordcloud import WordCloud
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from scipy.special import softmax
 import nltk
-from nltk.corpus import stopwords
+
 import string, json, re, io, base64, openai, random, torch
 from datetime import datetime
 import matplotlib.colors as mcolors
