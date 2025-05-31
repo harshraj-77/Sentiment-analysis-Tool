@@ -24,12 +24,19 @@ client = openai.OpenAI(api_key=openai_api_key) if openai_api_key else None
 
 app = Flask(__name__)
 
-# Download NLTK stopwords if not already downloaded
+# Point NLTK to local nltk_data/ directory committed to GitHub
+nltk.data.path.append(os.path.join(os.path.dirname(__file__), 'nltk_data'))
+
+from nltk.corpus import stopwords
+
+# Load stopwords from the included folder
 try:
-    nltk.data.find('corpora/stopwords')
-except nltk.downloader.DownloadError:
-    nltk.download('stopwords')
-stop_words = set(stopwords.words('english'))
+    stop_words = set(stopwords.words('english'))
+except LookupError:
+    raise RuntimeError(
+        "Missing stopwords corpus. Make sure nltk_data/corpora/stopwords is present in your GitHub repo."
+    )
+
 
 # Load sentiment model
 MODEL_NAME = "cardiffnlp/twitter-roberta-base-sentiment-latest"
